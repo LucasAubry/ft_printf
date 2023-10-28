@@ -1,0 +1,6 @@
+if c = putchar = ...
+else if s on va strlen les ... en utilisant va_start et tout la; 
+else if p = 
+else if d = putnbr = ...
+
+return (0);
