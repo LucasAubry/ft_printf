@@ -1,19 +1,22 @@
-int	ft_printf(const char *c, ...)
+#include 'printf.h'
+
+int ft_printf(const char *src, ...)
 {
-	
-	if const char c ->> ... write(1,c,1);
-}
+	int i;
+	va_list list;
 
-
-
-int ft_putchar(c)
-{
-	write()
-}
-	if * = ft_verif
-
-
-int main()
-{
-ft_printf("%c", "x");
+	i = 0;
+	va_start(list, src);
+	while (src[i])
+	{
+		if (src[i] == '%')
+		{
+			i++;
+			ft_verif(src[i], list);
+		}
+		else
+			i++;
+	}
+	va_end (list);
+	return ()
 }
