@@ -1,10 +1,16 @@
 NAME = ft_printf.a
+CC			= gcc
+CFLAGS		= -Wall -Werror -Wextra
+RM			= rm -f
 
-SRCS = 
 
-
-
-
+SRCS = ft_putchar.c \
+	ft_putstr.c \
+	ft_put_p.c \
+	ft_putnbr.c \
+	ft_putdecimalnonsigne.c \
+	ft_put_xX.c \
+	ft_pourcentage.c \
 
 AR = ar rcs
 
