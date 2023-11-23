@@ -6,13 +6,13 @@
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:25:14 by Laubry            #+#    #+#             */
-/*   Updated: 2023/11/04 12:53:06 by Laubry           ###   ########.fr       */
+/*   Updated: 2023/11/23 17:54:19 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-int ft_verif(va_list list, const char ft_return)
+int	ft_format(va_list args, const char format);
 {
 	int	len;
 
@@ -34,7 +34,7 @@ int ft_verif(va_list list, const char ft_return)
 	return (len);
 }
 
-int ft_printf(const char *src, ...)
+int	ft_printf(const char *format, ...);
 {
 	int i;
 	va_list list;
@@ -56,9 +56,4 @@ int ft_printf(const char *src, ...)
 	}
 	va_end (list);
 	return (len);
-}
-int main(void)
-{
-printf(" len=%d\n", ft_printf("%u", 123));
-printf(" len=%d\n", printf("%u", 123));
 }

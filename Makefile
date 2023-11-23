@@ -1,26 +1,17 @@
-NAME = ft_printf.a
+NAME = libftprintf.a
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
 RM			= rm -f
 
 
-SRCS = ft_putchar.c \
-	ft_putstr.c \
-	ft_put_p.c \
-	ft_putnbr.c \
-	ft_putdecimalnonsigne.c \
-	ft_put_xX.c \
-	ft_pourcentage.c \
+SRCS = ft_printf.c \
+		ft_printf_fonction.c
 
 AR = ar rcs
 
 OBJS =	${SRCS:.c=.o}
 
 BONUSOBJS	= ${BONUS:.c=.o}
-
-CC =	cc
-
-CFLAGS	=	-Wall -Wextra -Werror #-fsanitize=address
 
 .c.o:
 			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
