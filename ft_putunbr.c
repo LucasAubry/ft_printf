@@ -1,28 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnondecimal.c                                 :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 12:24:54 by Laubry            #+#    #+#             */
-/*   Updated: 2023/11/04 12:46:18 by Laubry           ###   ########.fr       */
+/*   Created: 2023/11/28 15:39:35 by Laubry            #+#    #+#             */
+/*   Updated: 2023/11/28 15:39:35 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "printf.h"
+#include "ft_printf.h"
 
-int ft_putdecimalnonsigne(unsigned int n)
+void	ft_putunbr_fd(unsigned int n, int fd)
 {
-    int count;
+	char	c;
 
-    count = 0;
-    if (n >= 9)
+	if (n >= 10)
 	{
-        ft_putdecimalnonsigne(n / 10);
-    }
-    ft_putchar((n % 10) + '0');
-    count++;
-	return (count);
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+	{
+		c = n + '0';
+		write(fd, &c, 1);
+	}
+}
+
+int	ft_putunbr(unsigned int nb)
+{
+	int	i;
+
+	i = 0;
+	ft_putunbr_fd(nb, 1);
+	if (!nb)
+		return (1);
+	while (nb)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
 }

@@ -1,65 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put.c                                           :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 12:25:08 by Laubry            #+#    #+#             */
-/*   Updated: 2023/11/04 12:46:13 by Laubry           ###   ########.fr       */
+/*   Created: 2023/11/28 15:39:00 by Laubry            #+#    #+#             */
+/*   Updated: 2023/11/28 15:39:14 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "printf.h"
+#include "ft_printf.h"
 
-int	ft_putstr(char *str)
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	c;
+
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+	{
+		c = n + '0';
+		write(fd, &c, 1);
+	}
+}
+
+int	ft_putnbr(int nb)
 {
 	int	i;
 
 	i = 0;
-	if (str == NULL)
-		return (NULL);
-	while (str[i] != '\0')
+	ft_putnbr_fd(nb, 1);
+	if (!nb)
+		return (1);
+	if (nb < 0)
+		i++;
+	while (nb)
 	{
-		write (1, &str[i], 1);
+		nb /= 10;
 		i++;
 	}
 	return (i);
-}
-
-
-
-int ft_printstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str == NULL)
-
-
-	{
-		ft_printstr("(null)");
-		return (6);
-	}
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
-}
-
-
-
-int	ft_putnbr(int n)
-{
-	int		taille;
-	char	*num;
-
-	taille = 0;
-	num = ft_itoa(n);
-	taille = ft_printstr(num);
-	free(num);
-	return (taille);
 }

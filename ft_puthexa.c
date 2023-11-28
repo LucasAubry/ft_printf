@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_singlechar.c                                    :+:      :+:    :+:   */
+/*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 12:25:12 by Laubry            #+#    #+#             */
-/*   Updated: 2023/11/04 13:20:30 by Laubry           ###   ########.fr       */
+/*   Created: 2023/11/28 15:39:21 by Laubry            #+#    #+#             */
+/*   Updated: 2023/11/28 15:39:28 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "printf.h"
+#include "ft_printf.h"
 
-int ft_putchar(int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	write(1, &c, 1);
-	return (1);
+	write (fd, &c, 1);
 }
 
-int	ft_pourcentage(void)
+void	ft_puthexa_2(unsigned int nb, char *base)
 {
-	write (1, "%", 1);
-	return (1);
+	if (nb >= 16)
+		ft_puthexa_2(nb / 16, base);
+	ft_putchar_fd(base[nb % 16], 1);
+}
+
+int	ft_puthexa(unsigned int nb, char *base)
+{
+	int	i;
+
+	i = 0;
+	ft_puthexa_2(nb, base);
+	if (!nb)
+		return (1);
+	while (nb)
+	{
+		nb /= 16;
+		i++;
+	}
+	return (i);
 }

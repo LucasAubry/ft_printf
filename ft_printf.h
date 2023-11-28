@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: Laubry <aubrylucas.pro@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 12:25:23 by Laubry            #+#    #+#             */
-/*   Updated: 2023/11/23 17:51:11 by Laubry           ###   ########.fr       */
+/*   Created: 2023/11/28 14:36:28 by Laubry            #+#    #+#             */
+/*   Updated: 2023/11/28 15:51:25 by Laubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-int ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int n);
-int	ft_nbrbase(unsigned long nbr, char *base, bool ptr);
-int	ft_format(va_list args, const char format);
-int	ft_printf(const char *format, ...);
+int		ft_p(void *adresse);
+int		ft_putchar(char c);
+int		ft_putnbr(int nb);
+int		ft_putunbr(unsigned int nb);
+int		ft_putstr(char *str);
+void	ft_puthexa_2(unsigned int nb, char *base);
+int		ft_puthexa(unsigned int nb, char *base);
+int		ft_printf(const char *format, ...);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif
